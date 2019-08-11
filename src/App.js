@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import {BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
+
+import Header from './header/header.js'
+import Reacteventsource from './reacteventsource/reacteventsource.js'
+import Npmpackage from './npmpackage/npmpackage.js'
+import Microfrontend from './microfrontend/microfrontend.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // You cannot use a BrowserRouter with a file:// path.
+    // It's a security thing. Either set up a small web server or use HashRouter.
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={Header} />
+        <Route path="/reacteventsource" component={Reacteventsource} />
+        <Route path="/npmpackage" component={Npmpackage} />
+        <Route path="/microfrontend" component={Microfrontend} />
+      </div>
+    </BrowserRouter>
   );
 }
 
